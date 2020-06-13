@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Registration</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:if="${error == 'T'}">Please make sure that content of password and repeat password fields is identical</p>
+    <form th:action="@{/register}" method="post">
+        <label for="email">Email:</label>
+        <input id="email" name="email" type="email"/>
+        <label for="pwd">Password:</label>
+        <input id="pwd" name="password" type="password"/>
+        <label for="repeatPwd">Repeat password:</label>
+        <input id="repeatPwd" name="repeatPassword" type="password"/>
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>

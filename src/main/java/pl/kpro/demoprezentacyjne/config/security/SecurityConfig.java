@@ -1,9 +1,12 @@
 package pl.kpro.demoprezentacyjne.config.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * @author Krzysztof 'impune_pl' Prorok <Krzysztof1397@gmail.com>
@@ -11,26 +14,20 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
+    private PasswordEncoder passwordEncoder;
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    public SecurityConfig(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService)
+    {
+        this.passwordEncoder = passwordEncoder;
+        this.userDetailsService = userDetailsService;
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception
     {
-        auth.inMemoryAuthentication()
-            .withUser("Admin")
-                .accountExpired(false)
-                .accountLocked(false)
-                .credentialsExpired(false)
-                .disabled(false)
-                .password("{noop}AdminPasswd")  //{noop} - plaintext password
-                .roles("USER","ADMINISTRATOR")
-            .and()
-            .withUser("Mod")
-                .accountExpired(false)
-                .accountLocked(false)
-                .credentialsExpired(false)
-                .disabled(false)
-                .password("{noop}ModPasswd")
-                .roles("USER","MODERATOR")
-        ;
+        auth.userDetailsService(this.userDetailsService).passwordEncoder(this.passwordEncoder);
     }
 
     @Override
