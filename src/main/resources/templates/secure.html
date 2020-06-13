@@ -6,7 +6,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="${Username}" />
-<p th:each="role : ${Roles}" th:text="${role.getAuthority()}"/>
+    <p th:text="${Username}" />
+    <p th:each="role : ${Roles}" th:text="${role.getAuthority()}"/>
+    <div>
+        <a th:href="@{~/logout}">logout</a>
+    </div>
 </body>
 </html>
