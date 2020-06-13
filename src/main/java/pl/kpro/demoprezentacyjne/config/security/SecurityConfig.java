@@ -41,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                 .antMatchers("/logout").authenticated()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-        ).formLogin();
+            )
+            .formLogin()
+        ;
     }
 }
