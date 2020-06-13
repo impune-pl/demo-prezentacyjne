@@ -7,5 +7,6 @@
 </head>
 <body>
 <p th:text="${Username}" />
+<p th:each="role : ${Roles}" th:text="${role.getAuthority()}"/>
 </body>
 </html>
