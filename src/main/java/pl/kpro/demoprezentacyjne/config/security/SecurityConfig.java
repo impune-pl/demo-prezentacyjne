@@ -1,6 +1,7 @@
 package pl.kpro.demoprezentacyjne.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -18,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     private UserDetailsService userDetailsService;
 
     @Autowired
-    public SecurityConfig(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService)
+    public SecurityConfig(PasswordEncoder passwordEncoder, @Qualifier("customUserDetailsService") UserDetailsService userDetailsService)
     {
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
