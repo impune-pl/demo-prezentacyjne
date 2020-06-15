@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Order</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Creation Date</th>
+        <td th:text="${order.getCreationDate()}"></td>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <td th:text="${order.getAddress()}"></td>
+    </tr>
+    <tr>
+        <th>Zip Code</th>
+        <td th:text="${order.getZipCode()}"></td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td th:text="${order.getEmail()}"></td>
+    </tr>
+    <tr>
+        <th>Phone Number</th>
+        <td th:text="${order.getPhoneNumber()}"></td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td th:text="${order.getProduct().getName()}"></td>
+    </tr>
+</table>
+<div>
+    <a th:href="@{~/}">index</a>
+</div>
+</body>
+</html>

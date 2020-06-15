@@ -2,15 +2,12 @@ package pl.kpro.demoprezentacyjne.data.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.kpro.demoprezentacyjne.data.entity.Role;
-
-import java.util.Optional;
+import pl.kpro.demoprezentacyjne.data.entity.Order;
 
 /**
  * @author Krzysztof 'impune_pl' Prorok <Krzysztof1397@gmail.com>
  */
 @Repository
-public interface RoleRepository extends JpaRepository<Role,Long>
+public interface OrderRepository extends JpaRepository<Order,Long>
 {
-    Optional<Role> getOneByNameEquals(String name);
 }

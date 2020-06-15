@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Product</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form th:action="@{/product/{id}/edit(id=${product.getId()})}" th:object="${product}" method="post">
+        <label for="name">Name: </label>
+        <input id="name" name="name" type="text" th:field="*{name}" />
+        <label for="description">Description: </label>
+        <textarea id="description" name="description" th:field="*{description}"></textarea>
+        <label for="price">Price: </label>
+        <input id="price" name="price" type="text" th:field="*{price}" />
+        <label for="inventory">Inventory: </label>
+        <input id="inventory" name="inventory" type="text" th:field="*{inventory}" />
+        <input type="submit" value="Submit" />
+    </form>
+
+    <div>
+        <a th:href="@{~/}">index</a>
+    </div>
+</body>
+</html>
+
+

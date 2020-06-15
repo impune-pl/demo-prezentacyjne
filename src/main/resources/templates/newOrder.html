@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Order</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form th:action="@{/order/new}" th:object="${order}" method="post">
+    <label for="address">Address: </label>
+    <input id="address" name="address" type="text" th:field="*{address}" />
+    <label for="zipCode">Zip code: </label>
+    <textarea id="zipCode" name="zipCode" th:field="*{zipCode}"></textarea>
+    <label for="phoneNumber">Phone number: </label>
+    <input id="phoneNumber" name="phoneNumber" type="text" th:field="*{phoneNumber}" />
+    <label for="email">Email: </label>
+    <input id="email" name="email" type="text" th:field="*{email}" />
+    <input id="productId" name="productId" type="text" th:field="*{productId}" hidden/>
+    <input type="submit" value="Submit" />
+</form>
+
+<div>
+    <a th:href="@{~/}">index</a>
+</div>
+</body>
+</html>
+
+
